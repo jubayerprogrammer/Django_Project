@@ -1,0 +1,64 @@
+{% extends "account/base.html" %}
+
+{% block title %}Product Detail{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+
+            <div class="card shadow rounded-4">
+                <div class="card-body p-4">
+
+                    <h4 class="text-center mb-4">
+                        📦 Product Details
+                    </h4>
+
+                    <div class="mb-3">
+                        <strong>Name:</strong>
+                        <p class="mb-0">{{ product.name }}</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Description:</strong>
+                        <p class="mb-0 text-muted">
+                            {{ product.descriptions }}
+                        </p>
+                    </div>
+
+                    <div class="mb-4">
+                        <strong>Price:</strong>
+                        <p class="mb-0 fw-bold text-success">
+                            ৳ {{ product.price }}
+                        </p>
+                    </div>
+
+                    <!--Change/edit product-->
+
+                     {% if perms.product.change_product%}
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'product_edit' product.pk %}" class="btn btn-warning">
+                            ✏️ Edit
+                        </a>
+                    {% endif %}
+
+                    <!-- Delete prodct -->
+
+
+                    {% if perms.product.delete_product %}
+
+                        <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger">
+                            🗑 Delete
+                        </a>
+                    {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

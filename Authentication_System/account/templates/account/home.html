@@ -1,0 +1,45 @@
+{% extends "account/base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body text-center p-5">
+
+                <h1 class="fw-bold mb-3">Welcome to Authentication System</h1>
+
+                <p class="text-muted mb-4">
+                    Secure login, registration and user dashboard management
+                    built with Django & Bootstrap.
+                </p>
+
+                {% if user.is_authenticated %}
+
+                <form method="post"action=" {% url "logout" %} ">
+                
+                    {% csrf_token %}
+
+                    <!-- Logout -->
+                    <button type="submit" class="btn btn-danger nav-link px-3">
+                            Logout
+                        </button>
+
+                    <a href="{% url "login" %}" class="btn btn-outline-primary px-4">Login</a>    
+
+                    </form>
+                {% else %}
+                    <a href="{% url "register" %}" class="btn btn-success px-4 me-2">Register</a>
+                    <a href="{% url "login" %}" class="btn btn-outline-primary px-4">Login</a>
+                {% endif %}
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,158 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7 col-sm-10">
+
+        <div class="card shadow border-0">
+            <div class="card-body p-4">
+
+                <h3 class="text-center fw-bold mb-3">Create an Account</h3>
+                <p class="text-center text-muted mb-4">
+                    Register to access your dashboard
+                </p>
+
+                <form action="{% url 'register' %}" method="post" novalidate>
+                    {% csrf_token %}
+
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            value="{{ form.name.value|default:'' }}"
+                            id="name"
+                            class="form-control"
+                            placeholder="Your full name"
+                            required
+                        >
+
+                        {% if form.name.errors %}
+                        <div class="text-danger small mt-1 fw-semibold">
+                            {% for error in form.name.errors %}
+                                <p class="mb-0">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value="{{ form.email.value|default:'' }}"
+                            id="email"
+                            class="form-control"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                        {% if form.email.errors %}
+                        <div class="text-danger small mt-1 fw-semibold">
+                            {% for error in form.email.errors %}
+                                <p class="mb-0">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label for="password1" class="form-label">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password1"
+                            class="form-control"
+                            placeholder="Create a password"
+                            required
+                        >
+
+                        {% if form.password.errors %}
+                        <div class="text-danger small mt-1 fw-semibold">
+                            {% for error in form.password.errors %}
+                                <p class="mb-0">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mb-3">
+                        <label for="password2" class="form-label">Confirm Password</label>
+                        <input
+                            type="password"
+                            name="confirm_password"
+                            id="password2"
+                            class="form-control"
+                            placeholder="Confirm your password"
+                            required
+                        >
+
+                        {% if form.confirm_password.errors %}
+                        <div class="text-danger small mt-1 fw-semibold">
+                            {% for error in form.confirm_password.errors %}
+                                <p class="mb-0">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!--Select button-->
+
+                    <div class="mb-3">
+                            <label for="role" class="form-label">Select Role</label>
+                            <select name="role"
+                                    id="role"
+                                    class="form-select {% if form.role.errors %}is-invalid{% endif %}">
+                                <option value="">-- Select your role --</option>
+                                <option value="seller" {% if form.role.value == "seller" %}selected{% endif %}>Seller</option>
+                                <option value="customer" {% if form.role.value == "customer" %}selected{% endif %}>Customer</option>
+                            </select>
+
+                            {% if form.role.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.role.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                    <!-- Submit -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">
+                            Register
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Divider -->
+                <div class="d-flex align-items-center my-4">
+                    <div class="flex-grow-1 border-top"></div>
+                    <span class="mx-2 text-muted">OR</span>
+                    <div class="flex-grow-1 border-top"></div>
+                </div>
+
+                <hr>
+
+                <!-- Login -->
+                <div class="text-center">
+                    <small class="text-muted">Already have an account?</small><br>
+                    <a href="{% url 'login' %}" class="fw-semibold text-decoration-none">
+                        Login here
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

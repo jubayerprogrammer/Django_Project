@@ -1,0 +1,79 @@
+{% extends "account/base.html" %}
+
+{% block title %}Customer Dashboard{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+
+            <!-- Customer Dashboard Card -->
+            <div class="card shadow-lg rounded-4 border-0">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h3 class="mb-0">👤 Customer Dashboard</h3>
+                </div>
+
+                <div class="card-body text-center">
+                    <p class="text-muted mb-4">
+                        Welcome to your dashboard. Manage your account and orders from here.
+                    </p>
+
+                    <!-- Action Buttons Grid -->
+                    <div class="row g-3 text-center">
+
+                        <!-- Product List -->
+                        <div class="col-12 col-md-6">
+                            <a href="{% url 'product_list' %}" class="btn btn-outline-success w-100 py-3 fw-bold shadow-sm hover-scale">
+                                🛒 Product List
+                            </a>
+                        </div>
+
+                        {% if perms.product.add_product %}
+                        
+                        <!-- Add Product -->
+                        <div class="col-12 col-md-6">
+                            <a href="{% url 'product_add' %}" class="btn btn-outline-primary w-100 py-3 fw-bold shadow-sm hover-scale">
+                                ➕ Add Product
+                            </a>
+                        </div>
+
+                        {% endif %}
+                        
+
+                        <!-- Change Password -->
+                        <div class="col-12 col-md-6">
+                            <a href="{% url 'password_change' %}" class="btn btn-warning w-100 py-3 fw-bold shadow-sm hover-scale">
+                                🔒 Change Password
+                            </a>
+                        </div>
+
+                        <!-- Logout -->
+                        <div class="col-12 col-md-6">
+                            <form method="post" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger w-100 py-3 fw-bold shadow-sm hover-scale">
+                                    🚪 Logout
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Customer Dashboard Card End -->
+
+        </div>
+    </div>
+</div>
+
+<!-- Extra CSS for hover animation -->
+<style>
+    .hover-scale {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hover-scale:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    }
+</style>
+{% endblock content %}

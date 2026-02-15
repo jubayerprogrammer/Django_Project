@@ -1,0 +1,36 @@
+{% extends "account/base.html" %}
+
+{% block title %}Add Product{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+
+            <div class="card shadow rounded-4">
+                <div class="card-body p-4">
+
+                    <h4 class="text-center mb-4">➕ Add New Product</h4>
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <!-- Django Form -->
+                        {{ form.as_p }}
+
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
