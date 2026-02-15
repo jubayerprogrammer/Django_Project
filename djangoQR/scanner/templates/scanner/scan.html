@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}
+
+{% block title %}Scan QR{% endblock title %}
+
+{% block content %}
+<div class="scan-container">
+
+    <h2 class="scan-heading">Scan QR Code</h2>
+
+    <!-- QR Scan Form -->
+    <form method="POST" enctype="multipart/form-data" class="scan-form">
+        {% csrf_token %}
+        
+        <label for="mobile_number" class="scan-label">Mobile Number:</label>
+        <input type="text" name="mobile_number" id="mobile_number" class="scan-input" placeholder="Enter 11-digit number" required pattern="\d{11}">
+        
+        <label for="qr_image" class="scan-label">Upload QR Image:</label>
+        <input type="file" name="qr_image" id="qr_image" class="scan-input" accept="image/*" required>
+        
+        <button type="submit" class="scan-button">Scan</button>
+    </form>
+
+    <!-- Messages Section: Form এর নিচে -->
+    {% if error or success %}
+    <div class="message-section">
+        {% if error %}
+            <div class="message error">{{ error }}</div>
+        {% endif %}
+        {% if success %}
+            <div class="message success">{{ success }}</div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock content %}

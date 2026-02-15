@@ -1,0 +1,49 @@
+{% extends "core/base.html" %}
+{% block title %}Generate QR{% endblock title %}
+
+{% block content %}
+<div class="qr-container">
+    <h2 class="qr-heading">Generate Your QR Code</h2>
+
+    <!-- ✅ QR Generate Form -->
+    <form method="post" class="qr-form">
+        {% csrf_token %}
+        <div class="qr-field">
+            <label class="qr-label">Mobile Number (11-digit):</label>
+            <input type="text" name="mobile_number" class="qr-input"
+                   placeholder="e.g. 017XXXXXXXXX" required pattern="\d{11}"
+                   value="{{ mobile_number }}">
+        </div>
+
+        <div class="qr-field">
+            <label class="qr-label">QR Data:</label>
+            <input type="text" name="qr_data" class="qr-input"
+                   placeholder="Enter text to encode" required
+                   value="{{ qr_data }}">
+        </div>
+
+        <button type="submit" class="qr-button">Generate QR</button>
+    </form>
+
+    <!-- ✅ নিচে আলাদা সেকশনে মেসেজ দেখানোর অংশ -->
+    {% if error %}
+      <div class="qr-message qr-error">
+        <p>{{ error }}</p>
+      </div>
+    {% elif success %}
+      <div class="qr-message qr-success">
+        <p>{{ success }}</p>
+      </div>
+    {% endif %}
+
+    <!-- ✅ QR Code preview -->
+    {% if qr_image_url %}
+        <div class="qr-result">
+            <h3 class="qr-result-heading">Your QR Code:</h3>
+            <img src="{{ qr_image_url }}" alt="Generated QR Code" class="qr-image">
+            <br>
+            <a href="{{ qr_image_url }}" class="qr-download">Download QR</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}

@@ -1,0 +1,287 @@
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: whitesmoke;
+    color: #333;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #030d30;
+    padding: 12px 20px;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+.nav-left a,
+.nav-right a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+    color: #ffdd57;
+}
+
+.nav-center {
+    flex: 1;
+    text-align: center;
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+}
+
+/* Rules Section */
+.rules {
+    background-color: #fff;
+    border-left: 5px solid #007bff;
+    padding: 15px 20px;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.rules p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* qr_generator * /
+/* মূল container */
+/* মূল container */
+
+
+
+.qr-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #afb6bd; /* light background */
+    border: 3px inset #ccc;    /* border around full form */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* soft shadow */
+
+}
+
+/* Heading */
+.qr-heading {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* Form field layout: responsive row */
+.qr-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/* প্রতিটি input block */
+.qr-field {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Label */
+.qr-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Input */
+.qr-input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Submit button */
+.qr-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.qr-button:hover {
+    background-color: #0056b3;
+}
+
+/* Message section */
+.qr-message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.qr-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.qr-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* QR result */
+.qr-result {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.qr-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.qr-download {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.qr-download:hover {
+    background-color: #218838;
+}
+
+/* ✅ Responsive adjustments */
+@media (max-width: 600px) {
+    .qr-form {
+        flex-direction: column;
+    }
+
+    .qr-field {
+        flex: 1 1 100%;
+    }
+
+    .qr-heading {
+        font-size: 1.5rem;
+    }
+
+    .qr-input, .qr-button {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+
+    .qr-download {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+}
+
+
+
+
+
+/* QR Scan Section */
+
+/* Scan Container */
+.scan-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #c2a6a6; /* Background color */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Heading */
+.scan-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Form */
+.scan-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.scan-form .scan-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.scan-button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.scan-button:hover {
+    background-color: #45a049;
+}
+
+/* Message Section: Form-এর নিচে */
+.message-section {
+    margin-top: 20px;
+}
+
+.message {
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.message.error {
+    background-color: #ffdddd;
+    color: #a94442;
+    border: 1px solid #a94442;
+}
+
+.message.success {
+    background-color: #ddffdd;
+    color: #3c763d;
+    border: 1px solid #3c763d;
+}
